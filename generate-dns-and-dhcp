@@ -68,7 +68,7 @@ def generate_dhcp(domain, dhcp, zone, fh):
 
     for record in sorted(records, key=operator.itemgetter('name')):
       if 'mac' in record:
-      	dhcp['records'].append(record)
+        dhcp['records'].append(record)
 
   fh.write(mako.template.Template(filename='dhcp.mako').render(**dhcp))
 
@@ -88,7 +88,7 @@ def main():
   with open(dchp_file, 'w') as fh:
     generate_dhcp(origin, config['dhcp'], config['dns'], fh)
 
-  os.chmod(dchp_file, 0755)
+  os.chmod(dchp_file, 0o755)
 
   subprocess.call(['/etc/init.d/unbound', 'reload'])
   subprocess.call([dchp_file])
