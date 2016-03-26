@@ -70,11 +70,11 @@ def generate_dhcp(domain, dhcp, zone, fh):
       if 'mac' in record:
         dhcp['records'].append(record)
 
-  fh.write(mako.template.Template(filename='dhcp.mako').render(**dhcp))
+  fh.write(mako.template.Template(filename='/config/zoned/dhcp.mako').render(**dhcp))
 
 
 def main():
-  with open('config.json') as fh:
+  with open('/config/zoned/config.json') as fh:
     config = json.load(fh)
 
   origin = config['domain']
