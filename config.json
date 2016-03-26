@@ -95,14 +95,16 @@
             { "name": "xbox", "alias": "xbox360" },
             { "name": "wii", "alias": "wii-u" },
             { "name": "scale", "alias": "withings-scale" },
-            { "name": "plex", "alias": "showtime" },
-            { "name": "slimserver", "alias": "showtime" },
-            { "name": "unifi", "alias": "showtime" },
-            { "name": "ut", "alias": "showtime" },
+            { "name": "plex", "alias": "gateway" },
+            { "name": "slimserver", "alias": "gateway" },
+            { "name": "unifi", "alias": "gateway" },
+            { "name": "ut", "alias": "gateway" },
+            { "name": "dl", "alias": "gateway" },
+            { "name": "nas", "alias": "gateway" },
             { "name": "august", "alias": "august-frontdoor-connect" },
             { "name": "lock", "alias": "august-frontdoor-connect" },
             { "name": "solar", "alias": "enphase" },
-            { "name": "doorbell", "alias": "doorbird" },
+            { "name": "doorbell", "alias": "gateway" },
             { "name": "spa", "alias": "hottub" }
         ]
     }
