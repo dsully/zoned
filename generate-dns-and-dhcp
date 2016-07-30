@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/config/virtualenv/bin/python
 
 import datetime
 import json
@@ -67,7 +67,7 @@ def generate_dhcp(domain, dhcp, zone, fh):
   for rtype, records in zone.iteritems():
 
     for record in sorted(records, key=operator.itemgetter('name')):
-      if 'mac' in record:
+      if record.get('mac'):
         dhcp['records'].append(record)
 
   fh.write(mako.template.Template(filename='/config/zoned/dhcp.mako').render(**dhcp))
