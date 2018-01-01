@@ -1,2 +1,5 @@
 dnspython
-mako
+linode
+flake8
+mypy
+natsort

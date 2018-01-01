@@ -1,0 +1,72 @@
+#!/home/dsully/dev/zoned/.direnv/python-3.5.2/bin/python3
+
+import collections
+import json
+import sys
+
+import dns.name
+import dns.rdata
+import dns.rdataclass
+import dns.rdatatype
+import dns.zone
+import ipaddress
+import natsort
+
+
+def generate_dns_zone(origin, zone_data, fh):
+
+    zone = dns.zone.Zone(dns.name.from_text(origin))
+
+    for rtype, records in zone_data.iteritems():
+
+        # Turn the record type into an int.
+        rdtype = dns.rdatatype.from_text(rtype)
+
+        for record in records:
+            rhs = str(record.get('ip', record.get('alias')))
+
+            # Get or create the rdataset for the given name.
+            # This will group records with the same name by adding them to the set.
+            n = zone.get_rdataset(str(record['name']), rdtype, create=True)
+            n.add(dns.rdata.from_text(dns.rdataclass.IN, rdtype, rhs))
+
+    options = ['enable-ra']
+    # options.append('dhcp-range=::1,constructor:eth0,ra-names,86400')
+
+    for name, node in zone.items():
+
+        for rdataset in node.rdatasets:
+            for rd in rdataset:
+
+                fqhn = name.derelativize(zone.origin).to_text()
+                ip = rd.to_text()
+                rtype = dns.rdatatype.to_text(rdataset.rdtype)
+
+                # Unbound doesn't handle CNAMEs. Turn it into an A record.
+                if rdataset.rdtype == dns.rdatatype.CNAME:
+                    ip = next(iter(zone.get_rdataset(ip, dns.rdatatype.A)))
+
+                #if rdataset.rdtype == dns.rdatatype.AAAA:
+                #    name_mapping[fqhn]['AAAA'] = ip
+                #else:
+
+                options.append('host-record={host},{ip}'.format(host=fqhn, ip=ip))
+                options.append('ptr-record={arpa},{host}'.format(arpa=ipaddress.ip_address(ip).reverse_pointer, host=fqhn))
+
+    return natsort.natsorted(options)
+
+
+if __name__ == '__main__':
+
+    with open('config.json') as fh:
+        config = json.load(fh)
+
+    with open('/var/lib/unifi/sites/default/config.gateway.json') as fh:
+        gateway = json.load(fh)
+
+    options = generate_dns_zone(config['domain'], config['dns'], sys.stdout)
+
+    gateway['service']['dns']['forwarding']['options'] = options
+
+    with open('config.gateway.json', 'w') as fh:
+        json.dump(gateway, fh, indent=4, sort_keys=True, separators=(',', ': '))
