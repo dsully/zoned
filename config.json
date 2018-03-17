@@ -11,17 +11,17 @@
     },
     "dns": {
         "a": [
-            { "name": "gateway", "ip": "192.168.0.1", "mac": "80:2a:a8:cd:7a:1d" },
+            { "name": "gateway", "ip": "192.168.0.1", "mac": "78:8a:20:7e:cd:a0" },
             { "name": "unifi-app-server", "ip": "192.168.0.2", "mac": "0c:c4:7a:9a:de:4c" },
             { "name": "unifi-switch-48", "ip": "192.168.0.3", "mac": "80:2a:a8:9c:52:80" },
             { "name": "unifi-switch-16-poe", "ip": "192.168.0.4", "mac": "80:2a:a8:9c:42:8a" },
             { "name": "wap-garage", "ip": "192.168.0.5", "mac": "f0:9f:c2:61:d0:e1" },
             { "name": "wap-upstairs", "ip": "192.168.0.6", "mac": "f0:9f:c2:61:d2:45" },
             { "name": "wap-downstairs", "ip": "192.168.0.7", "mac": "f0:9f:c2:61:d3:55" },
-            { "name": "wap-frontyard", "ip": "192.168.0.8" },
-            { "name": "wap-backyard", "ip": "192.168.0.9" },
+            { "name": "wap-frontyard", "ip": "192.168.0.9" },
+            { "name": "wap-backyard", "ip": "192.168.0.10" },
 
-            { "name": "rack-power-controller", "ip": "192.168.0.10", "mac": "7c:e1:ff:01:1b:bf" },
+            { "name": "unifi-switch-xg-16", "ip": "192.168.0.10", "mac": "78:8A:20:FD:03:1B" },
             { "name": "powerstrip-kids", "ip": "192.168.0.11", "mac": "00:7e:56:91:75:2f" },
             { "name": "unifi-app-server-ipmi", "ip": "192.168.0.12", "mac": "0c:c4:7a:9a:dc:a6" },
             { "name": "mfi-office-outlet-1", "ip": "192.168.0.13", "mac": "04:18:d6:cd:e6:e9" },
@@ -78,11 +78,12 @@
             { "name": "bluesound-office", "ip": "192.168.0.76", "mac": "44:c3:06:43:a7:92 " },
 
             { "name": "oyster", "ip": "192.168.0.80", "mac": "14:10:9f:d6:3e:69" },
-            { "name": "dsully-mn3", "ip": "192.168.0.83", "mac": "8c:85:90:5e:e8:fb" },
+            { "name": "dsully-mn2", "ip": "192.168.0.83", "mac": "8c:85:90:5e:e8:fb" },
             { "name": "apple-watch-karine", "ip": "192.168.0.84", "mac": "64:b0:a6:f2:41:96" },
             { "name": "iphone-dan", "ip": "192.168.0.85", "mac": "b0:19:c6:be:61:ef" },
             { "name": "iphone-karine", "ip": "192.168.0.87", "mac": "40:98:ad:30:d3:27" },
             { "name": "imac", "ip": "192.168.0.88", "mac": "98:10:e8:f1:40:c1" },
+            { "name": "dsully-mn2-eth", "ip": "192.168.0.89", "mac": "00:e1:38:00:00:5b" },
 
             { "name": "ipad-front-bedroom", "ip": "192.168.0.90", "mac": "34:12:98:c2:15:01" },
             { "name": "ipad-back-bedroom", "ip": "192.168.0.91", "mac": "04:52:f3:01:1b:90" },
@@ -135,7 +136,7 @@
         "aaaa": [
             { "name": "appletv", "ip": "2600:1700:9580:2558:ab:63f6:aa5f:3c89" },
             { "name": "lutron-bridge", "ip": "2600:1700:9580:2558:6264:5ff:fe63:e99e" },
-            { "name": "dsully-mn3", "ip": "2600:1700:9580:2558:1c17:c93d:6580:64b3" },
+            { "name": "dsully-mn2", "ip": "2600:1700:9580:2558:1c17:c93d:6580:64b3" },
             { "name": "ecobee3-downstairs", "ip": "2600:1700:9580:2558:6264:5ff:fe63:e99e" },
             { "name": "ecobee3-upstairs", "ip": "2600:1700:9580:2558:4661:32ff:fee4:e43" },
             { "name": "gateway", "ip": "2600:1700:9580:2558::1" },
@@ -159,7 +160,6 @@
             { "name": "nas", "alias": "synology-eth0" },
             { "name": "nvr", "alias": "unifi-app-server" },
             { "name": "plex", "alias": "unifi-app-server" },
-            { "name": "power", "alias": "gateway" },
             { "name": "printer", "alias": "printer-ethernet" },
             { "name": "ps4", "alias": "playstation4" },
             { "name": "spa", "alias": "hottub" },
