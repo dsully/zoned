@@ -1,4 +1,4 @@
-#!/home/dsully/dev/zoned/.direnv/python-3.5.2/bin/python3
+#!/home/dsully/dev/zoned/.direnv/python-3.6.5/bin/python3
 
 import collections
 import json
@@ -17,7 +17,7 @@ def generate_dns_zone(origin, zone_data, fh):
 
     zone = dns.zone.Zone(dns.name.from_text(origin))
 
-    for rtype, records in zone_data.iteritems():
+    for rtype, records in zone_data.items():
 
         # Turn the record type into an int.
         rdtype = dns.rdatatype.from_text(rtype)
