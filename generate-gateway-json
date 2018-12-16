@@ -1,4 +1,4 @@
-#!/home/dsully/dev/zoned/.direnv/python-3.6.5/bin/python3
+#!/home/dsully/dev/zoned/.direnv/python-3.6.7/bin/python3
 
 import collections
 import json
