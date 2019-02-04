@@ -1,0 +1,161 @@
+[Config]
+domain = "pants.electricrain.com"
+
+[LAN]
+shared-network-name = "net_LAN_eth1_10.0.0.0-24"
+subnet = "10.0.0.0/24"
+vlan = 0
+
+    [LAN.clients]
+    # 10.0.0.1/28
+    "10.0.0.1" = { mac = "78:8a:20:7e:cd:a0", name = "gateway", ipv6 = "2600:1700:9580:2551::1" }
+    "10.0.0.2" = { mac = "18:e8:29:41:48:21", name = "cloudkey", ipv6 = "2600:1700:9580:2551:1ae8:29ff:fe41:4821" }
+    "10.0.0.3" = { mac = "78:8a:20:ba:fd:f8", name = "unifi-switch-48-poe" }
+    "10.0.0.4" = { mac = "fc:ec:da:d4:33:be", name = "unifi-switch-8-poe" }
+    "10.0.0.5" = { mac = "78:8a:20:fd:03:1b", name = "unifi-switch-xg-16" }
+
+    # 10.0.0.16/28
+    "10.0.0.16" = { mac = "f0:9f:c2:61:d3:55", name = "wap-downstairs" }
+    "10.0.0.17" = { mac = "f0:9f:c2:61:d0:e1", name = "wap-garage" }
+    "10.0.0.18" = { mac = "f0:9f:c2:61:d2:45", name = "wap-upstairs" }
+    "10.0.0.19" = { mac = "f0:9f:c2:61:d2:19", name = "wap-backyard" }
+    "10.0.0.20" = { mac = "b4:fb:e4:70:63:2c", name = "wap-fans" }
+
+    # 10.0.0.32/28
+    "10.0.0.32" = { mac = "44:d9:e7:94:ce:9d", name = "uvc-garage-back" }
+    "10.0.0.33" = { mac = "44:d9:e7:94:ce:56", name = "uvc-garage-front" }
+    "10.0.0.34" = { mac = "f0:9f:c2:13:93:79", name = "uvc-north-east" }
+    "10.0.0.35" = { mac = "80:2a:a8:cc:8f:aa", name = "uvc-north-east-upstairs" }
+    "10.0.0.36" = { mac = "b4:fb:e4:e0:0b:bb", name = "uvc-north-west" }
+    "10.0.0.37" = { mac = "f0:9f:c2:13:91:cf", name = "uvc-south-east" }
+    "10.0.0.38" = { mac = "b4:fb:e4:e0:0c:10", name = "uvc-south-west" }
+
+    "10.0.0.39" = { mac = "44:d9:e7:94:9a:d3", name = "uvc-backyard", skip = true }
+    "10.0.0.40" = { mac = "fc:ec:da:8f:c2:29", name = "uvc-g3-pro-unused-1", skip = true }
+    "10.0.0.41" = { mac = "44:d9:e7:94:9a:f0", name = "uvc-g3-unused-1", skip = true }
+
+    # 10.0.0.96/28
+    "10.0.0.100" = { mac = "ac:1f:6b:41:29:b1", name = "server", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe41:29b1", aliases = ["dl", "pl", "nvr", "plex", "unifi"] }
+    "10.0.0.101" = { mac = "ac:1f:6b:4b:87:91", name = "server-ipmi", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe4b:8791", aliases = ["ipmi"] }
+
+    # 10.0.0.112/28
+    "10.0.0.112" = { mac = "98:10:e8:f1:40:c1", name = "imac", ipv6 = "2600:1700:9580:2551:10a6:7899:7e8c:46ff" }
+    "10.0.0.113" = { mac = "00:0c:29:0d:3f:44", name = "imac-vmware-windows" }
+
+    # 10.0.0.128/28
+    "10.0.0.128" = { mac = "68:fe:f7:2d:2e:62", name = "apple-watch-dan", radius = true }
+    "10.0.0.129" = { mac = "f0:99:b6:01:6f:30", name = "iphone-dan" }
+    "10.0.0.130" = { mac = "8c:85:90:5e:e8:fb", name = "dsully-mn2", ipv6 = "2600:1700:9580:2551:1c17:c93d:6580:64b3" }
+    "10.0.0.131" = { mac = "00:e1:38:00:00:5b", name = "dsully-mn2-eth" }
+    "10.0.0.132" = { mac = "90:b9:31:af:44:18", name = "ipad-dan" }
+
+    # 10.0.0.144/28
+    "10.0.0.144" = { mac = "f8:6f:c1:51:4a:cb", name = "apple-watch-karine", radius = true }
+    "10.0.0.145" = { mac = "90:b9:31:9b:dd:74", name = "ipad-karine" }
+    "10.0.0.146" = { mac = "f0:99:b6:08:df:ee", name = "iphone-karine" }
+    "10.0.0.147" = { mac = "14:10:9f:d6:3e:69", name = "oyster", ipv6 = "2600:1700:9580:2551:14c7:eda2:df31:496c" }
+
+    # 10.0.0.160/28
+    "10.0.0.160" = { mac = "78:7b:8a:47:43:ed", name = "ipad-olivia", ipv6 = "2600:1700:9580:2551:1cf5:da6e:5c22:331b" }
+
+    # 10.0.0.176/28
+    "10.0.0.176" = { mac = "78:7b:8a:4a:b3:7e", name = "ipad-eliza", ipv6 = "2600:1700:9580:2551:eb:eeef:9ac4:76c8" }
+
+    # 10.0.0.192/28
+    "10.0.0.192" = { mac = "04:52:f3:01:1b:90", name = "ipad-back-bedroom" }
+    "10.0.0.193" = { mac = "34:12:98:c2:15:01", name = "ipad-front-bedroom" }
+    "10.0.0.194" = { mac = "34:12:98:a2:30:99", name = "ipad-living-room" }
+    "10.0.0.195" = { mac = "34:12:98:ab:8f:55", name = "ipad-master-bedroom" }
+
+[Fans]
+shared-network-name = "net_Fans_eth1_10.0.20.0-24"
+subnet = "10.0.20.0/24"
+vlan = 20
+
+    [Fans.clients]
+    "10.0.20.2" = { mac = "20:f8:5e:ab:35:9d", name = "fan-back-bedroom" }
+    "10.0.20.3" = { mac = "20:f8:5e:d2:64:84", name = "fan-back-bedroom-controller" }
+    "10.0.20.4" = { mac = "20:f8:5e:aa:6c:8f", name = "fan-front-bedroom" }
+    "10.0.20.5" = { mac = "20:f8:5e:d2:74:38", name = "fan-front-bedroom-controller" }
+    "10.0.20.6" = { mac = "20:f8:5e:aa:7c:f8", name = "fan-living-room" }
+    "10.0.20.7" = { mac = "20:f8:5e:d2:4d:17", name = "fan-living-room-controller" }
+    "10.0.20.8" = { mac = "20:f8:5e:ab:32:56", name = "fan-master-bedroom" }
+    "10.0.20.9" = { mac = "20:f8:5e:d2:7e:d6", name = "fan-master-bedroom-controller" }
+
+["Internet Only"]
+shared-network-name = "net_Internet_Only_eth1_10.0.30.0-24"
+subnet = "10.0.30.0/24"
+vlan = 30
+
+    ["Internet Only".clients]
+    "10.0.30.16" = { mac = "18:b4:30:2d:f9:ed", name = "nest-protect-back-bedroom", radius = true }
+    "10.0.30.17" = { mac = "18:b4:30:2e:0f:e2", name = "nest-protect-entry", radius = true }
+    "10.0.30.18" = { mac = "18:b4:30:33:9e:64", name = "nest-protect-front-bedroom", radius = true }
+    "10.0.30.19" = { mac = "18:b4:30:2e:01:69", name = "nest-protect-hallway", radius = true }
+    "10.0.30.20" = { mac = "18:b4:30:33:9c:6f", name = "nest-protect-master-bedroom", radius = true }
+    "10.0.30.21" = { mac = "18:b4:30:2d:f6:b4", name = "nest-protect-upstairs", radius = true }
+    "10.0.30.22" = { mac = "00:18:61:27:09:45", name = "ooma" }
+    "10.0.30.23" = { mac = "ac:04:0b:0b:f1:f2", name = "peloton-ethernet" }
+    "10.0.30.24" = { mac = "ac:04:0b:01:47:47", name = "peloton-wifi", radius = true }
+    "10.0.30.25" = { mac = "80:a5:89:db:6e:aa", name = "rachio-iro", radius = true }
+    "10.0.30.26" = { mac = "00:1d:c0:64:62:fb", name = "solar-bridge" }
+    "10.0.30.27" = { mac = "d4:7b:b0:3b:d3:c9", name = "tmobile-cell-spot" }
+    "10.0.30.28" = { mac = "ac:cf:23:75:16:40", name = "anova", radius = true }
+    "10.0.30.29" = { mac = "d8:61:62:9d:bc:78", name = "august-connect", radius = true }
+    "10.0.30.30" = { mac = "00:24:e4:35:51:70", name = "withings-scale", radius = true }
+    "10.0.30.31" = { mac = "00:08:22:07:12:52", name = "karoo", radius = true }
+    "10.0.30.32" = { mac = "10:c6:fc:8b:55:12", name = "garmin-edge", radius = true }
+    "10.0.30.33" = { mac = "00:0e:c6:21:00:3c", name = "hottub", radius = true }
+    "10.0.30.34" = { mac = "00:0d:6f:29:05:04", name = "keen-vent-bridge", radius = true }
+    "10.0.30.35" = { mac = "04:4e:af:bb:a7:31", name = "tesla-model-3", radius = true }
+    "10.0.30.36" = { mac = "a0:14:3d:f3:9d:c4", name = "tesla-model-s", radius = true }
+    "10.0.30.37" = { mac = "50:f5:da:a9:38:e5", name = "kindle-dan", radius = true }
+    "10.0.30.38" = { mac = "ac:63:be:87:70:29", name = "kindle-karine", radius = true }
+    "10.0.30.39" = { mac = "4c:55:cc:12:97:ae", name = "juicebox-outside", radius = true }
+    "10.0.30.40" = { mac = "4c:55:cc:12:92:75", name = "juicebox-garage", radius = true }
+
+[Iot]
+shared-network-name = "net_IoT_eth1_10.0.40.0-24"
+subnet = "10.0.40.0/24"
+vlan = 40
+
+    [Iot.clients]
+    "10.0.40.16" = { mac = "1c:ca:e3:77:d1:c0", name = "doorbird" }
+    "10.0.40.17" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true, ipv6 = "2600:1700:9580:2551:6264:5ff:fe63:e99e" }
+    "10.0.40.18" = { mac = "44:61:32:e4:0e:43", name = "ecobee3-upstairs", radius = true, ipv6 = "2600:1700:9580:2551:4661:32ff:fee4:e43" }
+    "10.0.40.19" = { mac = "00:23:38:11:6c:00", name = "floor-heat-kids", radius = true }
+    "10.0.40.20" = { mac = "00:23:38:11:72:16", name = "floor-heat-master", radius = true }
+    "10.0.40.21" = { mac = "00:17:88:20:58:ab", name = "hue-light-bridge" }
+    "10.0.40.23" = { mac = "64:52:99:a7:22:84", name = "liftmaster-bridge", radius = true }
+    "10.0.40.24" = { mac = "60:64:05:63:e9:9e", name = "lutron-bridge", ipv6 = "2600:1700:9580:2551:6264:5ff:fe63:e99e" }
+    "10.0.40.25" = { mac = "00:7e:56:91:75:2f", name = "powerstrip-kids", radius = true }
+    "10.0.40.26" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
+    "10.0.40.27" = { mac = "74:29:af:6f:5f:ba", name = "printer-wifi", radius = true }
+    "10.0.40.28" = { mac = "00:0f:e7:07:69:51", name = "radiora2-controller-a" }
+    "10.0.40.29" = { mac = "00:0f:e7:04:06:c3", name = "radiora2-controller-b" }
+    "10.0.40.30" = { mac = "00:80:92:57:00:8c", name = "scansnap", radius = true }
+    "10.0.40.31" = { mac = "b8:27:eb:fd:e0:fd", name = "sisyphus", radius = true }
+    "10.0.40.32" = { mac = "60:01:94:19:92:15", name = "tittle-light", radius = true }
+
+[Media]
+shared-network-name = "net_Media_eth1_10.0.50.0-24"
+subnet = "10.0.50.0/24"
+vlan = 50
+
+    [Media.clients]
+    "10.0.50.16" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv", ipv6 = "2600:1700:9580:2551:ab:63f6:aa5f:3c89" }
+    "10.0.50.17" = { mac = "44:c3:06:43:a7:92", name = "bluesound-office", radius = true }
+    "10.0.50.18" = { mac = "00:05:cd:a4:01:17", name = "denon", aliases = ["avr"] }
+    "10.0.50.19" = { mac = "5c:f3:70:3c:5e:98", name = "neeo" }
+    "10.0.50.20" = { mac = "60:64:05:a5:da:37", name = "neeo-remote" }
+    "10.0.50.21" = { mac = "1a:2b:3c:4d:8e:ba", name = "nintendo-switch-ethernet" }
+    "10.0.50.22" = { mac = "04:03:d6:73:c0:fa", name = "nintendo-switch-wifi", radius = true }
+    "10.0.50.23" = { mac = "f8:46:1c:5f:8a:b3", name = "playstation4" }
+    "10.0.50.24" = { mac = "00:04:4b:5c:47:e0", name = "shield" }
+    "10.0.50.25" = { mac = "b8:e9:37:a9:01:48", name = "sonos-deck" }
+    "10.0.50.26" = { mac = "b8:e9:37:a9:5b:a2", name = "sonos-dining-room" }
+    "10.0.50.27" = { mac = "b8:e9:37:a8:88:c0", name = "sonos-front-bedroom" }
+    "10.0.50.28" = { mac = "b8:e9:37:a9:01:f6", name = "sonos-kids-bedroom" }
+    "10.0.50.29" = { mac = "b8:e9:37:a8:fc:38", name = "sonos-master-bedroom" }
+    "10.0.50.30" = { mac = "a4:8d:3b:fb:f2:65", name = "vizio-tv-ethernet" }
+    "10.0.50.31" = { mac = "a4:8d:3b:20:55:b0", name = "vizio-tv-wifi", radius = true }

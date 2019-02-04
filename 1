@@ -16,10 +16,7 @@ def generate_radius_entries(networks):
 
     entries = {}
 
-    for name, data in networks.items():
-
-        if name == "Config":
-            continue
+    for data in [d for d in networks.values() if 'vlan' in d]:
 
         for client in [c for c in data['clients'].values() if c.get('radius') is True]:
 
