@@ -1,4 +1,5 @@
 #!/bin/bash
 
-sudo cp config.gateway.json /var/lib/unifi/sites/default/config.gateway.json
+# sudo cp config.gateway.json /var/lib/unifi/sites/default/config.gateway.json
+sudo cp config.gateway.json /srv/unifi/data/sites/default/config.gateway.json
 sudo rm config.gateway.json

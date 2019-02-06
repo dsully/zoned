@@ -4,7 +4,6 @@ domain = "pants.electricrain.com"
 [LAN]
 shared-network-name = "net_LAN_eth1_10.0.0.0-24"
 subnet = "10.0.0.0/24"
-vlan = 0
 
     [LAN.clients]
     # 10.0.0.1/28
@@ -43,14 +42,12 @@ vlan = 0
     "10.0.0.113" = { mac = "00:0c:29:0d:3f:44", name = "imac-vmware-windows" }
 
     # 10.0.0.128/28
-    "10.0.0.128" = { mac = "68:fe:f7:2d:2e:62", name = "apple-watch-dan", radius = true }
-    "10.0.0.129" = { mac = "f0:99:b6:01:6f:30", name = "iphone-dan" }
+    "10.0.0.128" = { mac = "f0:99:b6:01:6f:30", name = "iphone-dan" }
+    "10.0.0.129" = { mac = "90:b9:31:af:44:18", name = "ipad-dan" }
     "10.0.0.130" = { mac = "8c:85:90:5e:e8:fb", name = "dsully-mn2", ipv6 = "2600:1700:9580:2551:1c17:c93d:6580:64b3" }
     "10.0.0.131" = { mac = "00:e1:38:00:00:5b", name = "dsully-mn2-eth" }
-    "10.0.0.132" = { mac = "90:b9:31:af:44:18", name = "ipad-dan" }
 
     # 10.0.0.144/28
-    "10.0.0.144" = { mac = "f8:6f:c1:51:4a:cb", name = "apple-watch-karine", radius = true }
     "10.0.0.145" = { mac = "90:b9:31:9b:dd:74", name = "ipad-karine" }
     "10.0.0.146" = { mac = "f0:99:b6:08:df:ee", name = "iphone-karine" }
     "10.0.0.147" = { mac = "14:10:9f:d6:3e:69", name = "oyster", ipv6 = "2600:1700:9580:2551:14c7:eda2:df31:496c" }
@@ -99,7 +96,7 @@ vlan = 30
     "10.0.30.24" = { mac = "ac:04:0b:01:47:47", name = "peloton-wifi", radius = true }
     "10.0.30.25" = { mac = "80:a5:89:db:6e:aa", name = "rachio-iro", radius = true }
     "10.0.30.26" = { mac = "00:1d:c0:64:62:fb", name = "solar-bridge" }
-    "10.0.30.27" = { mac = "d4:7b:b0:3b:d3:c9", name = "tmobile-cell-spot" }
+    "10.0.30.27" = { mac = "78:29:ed:c8:d9:f5", name = "tmobile-cell-spot", radius = true }
     "10.0.30.28" = { mac = "ac:cf:23:75:16:40", name = "anova", radius = true }
     "10.0.30.29" = { mac = "d8:61:62:9d:bc:78", name = "august-connect", radius = true }
     "10.0.30.30" = { mac = "00:24:e4:35:51:70", name = "withings-scale", radius = true }
@@ -121,13 +118,13 @@ vlan = 40
 
     [Iot.clients]
     "10.0.40.16" = { mac = "1c:ca:e3:77:d1:c0", name = "doorbird" }
-    "10.0.40.17" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true, ipv6 = "2600:1700:9580:2551:6264:5ff:fe63:e99e" }
-    "10.0.40.18" = { mac = "44:61:32:e4:0e:43", name = "ecobee3-upstairs", radius = true, ipv6 = "2600:1700:9580:2551:4661:32ff:fee4:e43" }
+    "10.0.40.17" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true }
+    "10.0.40.18" = { mac = "44:61:32:e4:0e:43", name = "ecobee3-upstairs", radius = true }
     "10.0.40.19" = { mac = "00:23:38:11:6c:00", name = "floor-heat-kids", radius = true }
     "10.0.40.20" = { mac = "00:23:38:11:72:16", name = "floor-heat-master", radius = true }
     "10.0.40.21" = { mac = "00:17:88:20:58:ab", name = "hue-light-bridge" }
     "10.0.40.23" = { mac = "64:52:99:a7:22:84", name = "liftmaster-bridge", radius = true }
-    "10.0.40.24" = { mac = "60:64:05:63:e9:9e", name = "lutron-bridge", ipv6 = "2600:1700:9580:2551:6264:5ff:fe63:e99e" }
+    "10.0.40.24" = { mac = "60:64:05:63:e9:9e", name = "lutron-bridge" }
     "10.0.40.25" = { mac = "00:7e:56:91:75:2f", name = "powerstrip-kids", radius = true }
     "10.0.40.26" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
     "10.0.40.27" = { mac = "74:29:af:6f:5f:ba", name = "printer-wifi", radius = true }
@@ -136,6 +133,8 @@ vlan = 40
     "10.0.40.30" = { mac = "00:80:92:57:00:8c", name = "scansnap", radius = true }
     "10.0.40.31" = { mac = "b8:27:eb:fd:e0:fd", name = "sisyphus", radius = true }
     "10.0.40.32" = { mac = "60:01:94:19:92:15", name = "tittle-light", radius = true }
+    "10.0.40.33" = { mac = "68:fe:f7:2d:2e:62", name = "apple-watch-dan", radius = true }
+    "10.0.40.34" = { mac = "f8:6f:c1:51:4a:cb", name = "apple-watch-karine", radius = true }
 
 [Media]
 shared-network-name = "net_Media_eth1_10.0.50.0-24"
@@ -143,11 +142,11 @@ subnet = "10.0.50.0/24"
 vlan = 50
 
     [Media.clients]
-    "10.0.50.16" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv", ipv6 = "2600:1700:9580:2551:ab:63f6:aa5f:3c89" }
+    "10.0.50.16" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv" }
     "10.0.50.17" = { mac = "44:c3:06:43:a7:92", name = "bluesound-office", radius = true }
     "10.0.50.18" = { mac = "00:05:cd:a4:01:17", name = "denon", aliases = ["avr"] }
-    "10.0.50.19" = { mac = "5c:f3:70:3c:5e:98", name = "neeo" }
-    "10.0.50.20" = { mac = "60:64:05:a5:da:37", name = "neeo-remote" }
+    "10.0.50.19" = { mac = "5c:f3:70:3c:5e:98", name = "neeo", radius = true }
+    "10.0.50.20" = { mac = "60:64:05:a5:da:37", name = "neeo-remote", radius = true }
     "10.0.50.21" = { mac = "1a:2b:3c:4d:8e:ba", name = "nintendo-switch-ethernet" }
     "10.0.50.22" = { mac = "04:03:d6:73:c0:fa", name = "nintendo-switch-wifi", radius = true }
     "10.0.50.23" = { mac = "f8:46:1c:5f:8a:b3", name = "playstation4" }
