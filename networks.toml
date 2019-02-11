@@ -24,7 +24,7 @@ subnet = "10.0.0.0/24"
     "10.0.0.32" = { mac = "44:d9:e7:94:ce:9d", name = "uvc-garage-back" }
     "10.0.0.33" = { mac = "44:d9:e7:94:ce:56", name = "uvc-garage-front" }
     "10.0.0.34" = { mac = "f0:9f:c2:13:93:79", name = "uvc-north-east" }
-    "10.0.0.35" = { mac = "80:2a:a8:cc:8f:aa", name = "uvc-north-east-upstairs" }
+    "10.0.0.35" = { mac = "b4:fb:e4:e0:0c:67", name = "uvc-north-east-upstairs" }
     "10.0.0.36" = { mac = "b4:fb:e4:e0:0b:bb", name = "uvc-north-west" }
     "10.0.0.37" = { mac = "f0:9f:c2:13:91:cf", name = "uvc-south-east" }
     "10.0.0.38" = { mac = "b4:fb:e4:e0:0c:10", name = "uvc-south-west" }
@@ -32,6 +32,7 @@ subnet = "10.0.0.0/24"
     "10.0.0.39" = { mac = "44:d9:e7:94:9a:d3", name = "uvc-backyard", skip = true }
     "10.0.0.40" = { mac = "fc:ec:da:8f:c2:29", name = "uvc-g3-pro-unused-1", skip = true }
     "10.0.0.41" = { mac = "44:d9:e7:94:9a:f0", name = "uvc-g3-unused-1", skip = true }
+    "10.0.0.42" = { mac = "80:2a:a8:cc:8f:aa", name = "uvc-g3-unused-2", skip = true }
 
     # 10.0.0.96/28
     "10.0.0.100" = { mac = "ac:1f:6b:41:29:b1", name = "server", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe41:29b1", aliases = ["dl", "pl", "nvr", "plex", "unifi"] }
@@ -117,44 +118,48 @@ subnet = "10.0.40.0/24"
 vlan = 40
 
     [Iot.clients]
-    "10.0.40.16" = { mac = "1c:ca:e3:77:d1:c0", name = "doorbird" }
-    "10.0.40.17" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true }
-    "10.0.40.18" = { mac = "44:61:32:e4:0e:43", name = "ecobee3-upstairs", radius = true }
-    "10.0.40.19" = { mac = "00:23:38:11:6c:00", name = "floor-heat-kids", radius = true }
-    "10.0.40.20" = { mac = "00:23:38:11:72:16", name = "floor-heat-master", radius = true }
-    "10.0.40.21" = { mac = "00:17:88:20:58:ab", name = "hue-light-bridge" }
-    "10.0.40.23" = { mac = "64:52:99:a7:22:84", name = "liftmaster-bridge", radius = true }
+    # 10.0.40.1/28 - Sonos
+    "10.0.40.2" = { mac = "b8:e9:37:a9:01:48", name = "sonos-deck" }
+    "10.0.40.3" = { mac = "b8:e9:37:a9:5b:a2", name = "sonos-dining-room" }
+    "10.0.40.4" = { mac = "b8:e9:37:a8:88:c0", name = "sonos-front-bedroom" }
+    "10.0.40.5" = { mac = "b8:e9:37:a9:01:f6", name = "sonos-kids-bedroom" }
+    "10.0.40.6" = { mac = "b8:e9:37:a8:fc:38", name = "sonos-master-bedroom" }
+
+    # 10.0.40.16/28 - Lutron
     "10.0.40.24" = { mac = "60:64:05:63:e9:9e", name = "lutron-bridge" }
-    "10.0.40.25" = { mac = "00:7e:56:91:75:2f", name = "powerstrip-kids", radius = true }
-    "10.0.40.26" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
-    "10.0.40.27" = { mac = "74:29:af:6f:5f:ba", name = "printer-wifi", radius = true }
     "10.0.40.28" = { mac = "00:0f:e7:07:69:51", name = "radiora2-controller-a" }
     "10.0.40.29" = { mac = "00:0f:e7:04:06:c3", name = "radiora2-controller-b" }
-    "10.0.40.30" = { mac = "00:80:92:57:00:8c", name = "scansnap", radius = true }
-    "10.0.40.31" = { mac = "b8:27:eb:fd:e0:fd", name = "sisyphus", radius = true }
-    "10.0.40.32" = { mac = "60:01:94:19:92:15", name = "tittle-light", radius = true }
-    "10.0.40.33" = { mac = "68:fe:f7:2d:2e:62", name = "apple-watch-dan", radius = true }
-    "10.0.40.34" = { mac = "f8:6f:c1:51:4a:cb", name = "apple-watch-karine", radius = true }
 
-[Media]
-shared-network-name = "net_Media_eth1_10.0.50.0-24"
-subnet = "10.0.50.0/24"
-vlan = 50
+    # 10.0.40.32/28 - Printer
+    "10.0.40.32" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
+    "10.0.40.33" = { mac = "74:29:af:6f:5f:ba", name = "printer-wifi", radius = true }
 
-    [Media.clients]
-    "10.0.50.16" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv" }
-    "10.0.50.17" = { mac = "44:c3:06:43:a7:92", name = "bluesound-office", radius = true }
-    "10.0.50.18" = { mac = "00:05:cd:a4:01:17", name = "denon", aliases = ["avr"] }
-    "10.0.50.19" = { mac = "5c:f3:70:3c:5e:98", name = "neeo", radius = true }
-    "10.0.50.20" = { mac = "60:64:05:a5:da:37", name = "neeo-remote", radius = true }
-    "10.0.50.21" = { mac = "1a:2b:3c:4d:8e:ba", name = "nintendo-switch-ethernet" }
-    "10.0.50.22" = { mac = "04:03:d6:73:c0:fa", name = "nintendo-switch-wifi", radius = true }
-    "10.0.50.23" = { mac = "f8:46:1c:5f:8a:b3", name = "playstation4" }
-    "10.0.50.24" = { mac = "00:04:4b:5c:47:e0", name = "shield" }
-    "10.0.50.25" = { mac = "b8:e9:37:a9:01:48", name = "sonos-deck" }
-    "10.0.50.26" = { mac = "b8:e9:37:a9:5b:a2", name = "sonos-dining-room" }
-    "10.0.50.27" = { mac = "b8:e9:37:a8:88:c0", name = "sonos-front-bedroom" }
-    "10.0.50.28" = { mac = "b8:e9:37:a9:01:f6", name = "sonos-kids-bedroom" }
-    "10.0.50.29" = { mac = "b8:e9:37:a8:fc:38", name = "sonos-master-bedroom" }
-    "10.0.50.30" = { mac = "a4:8d:3b:fb:f2:65", name = "vizio-tv-ethernet" }
-    "10.0.50.31" = { mac = "a4:8d:3b:20:55:b0", name = "vizio-tv-wifi", radius = true }
+    # 10.0.40.48/28 - Random IoT
+    "10.0.40.48" = { mac = "00:80:92:57:00:8c", name = "scansnap", radius = true }
+    "10.0.40.49" = { mac = "b8:27:eb:fd:e0:fd", name = "sisyphus", radius = true }
+    "10.0.40.50" = { mac = "60:01:94:19:92:15", name = "tittle-light", radius = true }
+    "10.0.40.51" = { mac = "68:fe:f7:2d:2e:62", name = "apple-watch-dan", radius = true }
+    "10.0.40.52" = { mac = "f8:6f:c1:51:4a:cb", name = "apple-watch-karine", radius = true }
+
+    # 10.0.40.64/28 - Media
+    "10.0.40.64" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv" }
+    "10.0.40.65" = { mac = "44:c3:06:43:a7:92", name = "bluesound-office", radius = true }
+    "10.0.40.66" = { mac = "00:05:cd:a4:01:17", name = "denon", aliases = ["avr"] }
+    "10.0.40.67" = { mac = "00:17:88:20:58:ab", name = "hue-light-bridge" }
+    "10.0.40.68" = { mac = "64:52:99:a7:22:84", name = "liftmaster-bridge", radius = true }
+    "10.0.40.69" = { mac = "5c:f3:70:3c:5e:98", name = "neeo", radius = true }
+    "10.0.40.70" = { mac = "60:64:05:a5:da:37", name = "neeo-remote", radius = true }
+    "10.0.40.71" = { mac = "1a:2b:3c:4d:8e:ba", name = "nintendo-switch-ethernet" }
+    "10.0.40.72" = { mac = "04:03:d6:73:c0:fa", name = "nintendo-switch-wifi", radius = true }
+    "10.0.40.73" = { mac = "f8:46:1c:5f:8a:b3", name = "playstation4" }
+    "10.0.40.74" = { mac = "00:7e:56:91:75:2f", name = "powerstrip-kids", radius = true }
+    "10.0.40.75" = { mac = "00:04:4b:5c:47:e0", name = "shield" }
+    "10.0.40.76" = { mac = "a4:8d:3b:fb:f2:65", name = "vizio-tv-ethernet" }
+    "10.0.40.77" = { mac = "a4:8d:3b:20:55:b0", name = "vizio-tv-wifi", radius = true }
+
+    # 10.0.0.80/28 - House Infrastructure
+    "10.0.40.80" = { mac = "1c:ca:e3:77:d1:c0", name = "doorbird" }
+    "10.0.40.81" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true }
+    "10.0.40.82" = { mac = "44:61:32:e4:0e:43", name = "ecobee3-upstairs", radius = true }
+    "10.0.40.83" = { mac = "00:23:38:11:6c:00", name = "floor-heat-kids", radius = true }
+    "10.0.40.84" = { mac = "00:23:38:11:72:16", name = "floor-heat-master", radius = true }
