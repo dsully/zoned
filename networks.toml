@@ -9,9 +9,8 @@ subnet = "10.0.0.0/24"
     # 10.0.0.1/28
     "10.0.0.1" = { mac = "78:8a:20:7e:cd:a0", name = "gateway", ipv6 = "2600:1700:9580:2551::1" }
     "10.0.0.2" = { mac = "18:e8:29:41:48:21", name = "cloudkey", ipv6 = "2600:1700:9580:2551:1ae8:29ff:fe41:4821" }
-    "10.0.0.3" = { mac = "78:8a:20:ba:fd:f8", name = "unifi-switch-48-poe" }
+    "10.0.0.3" = { mac = "18:e8:29:2c:fd:11", name = "unifi-switch-48-pro" }
     "10.0.0.4" = { mac = "fc:ec:da:d4:33:be", name = "unifi-switch-8-poe" }
-    "10.0.0.5" = { mac = "78:8a:20:fd:03:1b", name = "unifi-switch-xg-16" }
 
     # 10.0.0.16/28
     "10.0.0.16" = { mac = "f0:9f:c2:61:d3:55", name = "wap-downstairs" }
@@ -35,8 +34,10 @@ subnet = "10.0.0.0/24"
     "10.0.0.42" = { mac = "80:2a:a8:cc:8f:aa", name = "uvc-g3-unused-2", skip = true }
 
     # 10.0.0.96/28
-    "10.0.0.100" = { mac = "ac:1f:6b:41:29:b1", name = "server", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe41:29b1", aliases = ["dl", "pl", "nvr", "plex", "unifi"] }
+    "10.0.0.100" = { mac = "ac:1f:6b:41:29:b0", name = "server", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe41:29b0", aliases = ["crashplan", "dl", "pl", "nvr", "plex", "unifi", "windows"] }
     "10.0.0.101" = { mac = "ac:1f:6b:4b:87:91", name = "server-ipmi", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe4b:8791", aliases = ["ipmi"] }
+
+    "10.0.0.102" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
 
     # 10.0.0.112/28
     "10.0.0.112" = { mac = "98:10:e8:f1:40:c1", name = "imac", ipv6 = "2600:1700:9580:2551:10a6:7899:7e8c:46ff" }
@@ -64,6 +65,7 @@ subnet = "10.0.0.0/24"
     "10.0.0.193" = { mac = "34:12:98:c2:15:01", name = "ipad-front-bedroom" }
     "10.0.0.194" = { mac = "34:12:98:a2:30:99", name = "ipad-living-room" }
     "10.0.0.195" = { mac = "34:12:98:ab:8f:55", name = "ipad-master-bedroom" }
+    "10.0.0.196" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv" }
 
 [Fans]
 shared-network-name = "net_Fans_eth1_10.0.20.0-24"
@@ -131,8 +133,8 @@ vlan = 40
     "10.0.40.29" = { mac = "00:0f:e7:04:06:c3", name = "radiora2-controller-b" }
 
     # 10.0.40.32/28 - Printer
-    "10.0.40.32" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
-    "10.0.40.33" = { mac = "74:29:af:6f:5f:ba", name = "printer-wifi", radius = true }
+    # "10.0.40.32" = { mac = "30:05:5c:70:8d:22", name = "printer-ethernet", aliases = ["printer"], ipv6 = "2600:1700:9580:2551:3205:5cff:fe70:8d22" }
+    # "10.0.40.33" = { mac = "74:29:af:6f:5f:ba", name = "printer-wifi", radius = true }
 
     # 10.0.40.48/28 - Random IoT
     "10.0.40.48" = { mac = "00:80:92:57:00:8c", name = "scansnap", radius = true }
@@ -140,9 +142,10 @@ vlan = 40
     "10.0.40.50" = { mac = "60:01:94:19:92:15", name = "tittle-light", radius = true }
     "10.0.40.51" = { mac = "68:fe:f7:2d:2e:62", name = "apple-watch-dan", radius = true }
     "10.0.40.52" = { mac = "f8:6f:c1:51:4a:cb", name = "apple-watch-karine", radius = true }
+    "10.0.40.53" = { mac = "e4:23:54:0d:43:e9", name = "outlet-kids-bedroom", radius = true }
 
     # 10.0.40.64/28 - Media
-    "10.0.40.64" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv" }
+    # "10.0.40.64" = { mac = "40:cb:c0:ab:5c:4c", name = "appletv" }
     "10.0.40.65" = { mac = "44:c3:06:43:a7:92", name = "bluesound-office", radius = true }
     "10.0.40.66" = { mac = "00:05:cd:a4:01:17", name = "denon", aliases = ["avr"] }
     "10.0.40.67" = { mac = "00:17:88:20:58:ab", name = "hue-light-bridge" }
@@ -159,7 +162,11 @@ vlan = 40
 
     # 10.0.0.80/28 - House Infrastructure
     "10.0.40.80" = { mac = "1c:ca:e3:77:d1:c0", name = "doorbird" }
-    "10.0.40.81" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true }
-    "10.0.40.82" = { mac = "44:61:32:e4:0e:43", name = "ecobee3-upstairs", radius = true }
+    "10.0.40.81" = { mac = "44:61:32:fa:23:20", name = "ecobee3-downstairs", radius = true, ipv6 = "2600:1700:9580:2554:4661:32ff:fefa:2320" }
+    "10.0.40.82" = { mac = "44:61:32:fb:4b:30", name = "ecobee3-upstairs", radius = true, ipv6 = "2600:1700:9580:2554:4661:32ff:fefb:4b30" }
     "10.0.40.83" = { mac = "00:23:38:11:6c:00", name = "floor-heat-kids", radius = true }
     "10.0.40.84" = { mac = "00:23:38:11:72:16", name = "floor-heat-master", radius = true }
+
+    # Server
+    "10.0.40.100" = { mac = "ac:1f:6b:41:29:b1", name = "server-vlan40", ipv6 = "2600:1700:9580:2551:ae1f:6bff:fe41:29b1" }
+    "10.0.40.101" = { mac = "00:0c:29:0d:3f:4e", name = "windows-vm" }
