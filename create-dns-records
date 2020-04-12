@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+from pathlib import Path
+from operator import itemgetter
+
+import click
+import tomlkit
+
+from linode_api4 import LinodeClient
+from linode_api4.objects.domain import Domain
+from pyunifi.controller import Controller
+
+
+@click.command()
+def main():
+
+    config = tomlkit.loads((Path.home() / ".config/zoned/config.toml").read_text())
+
+    linode = LinodeClient(token=config["linode"]["token"])
+
+    domain: Domain = next(iter(linode.domains(Domain.domain == config["linode"]["domain"])))
+
+    records = {r.name: r.target for r in domain.records}
+
+    for client in sorted(Controller(**config["unifi"]).get_clients(), key=itemgetter("name")):
+
+        name = client.get("name")
+        target = client.get("ip")
+
+        if not target:
+            continue
+
+        if name in config["linode"]["skip"]:
+            continue
+
+        if name not in records or records[name] != target:
+
+            print(f"Creating A record for {name} -> {target}")
+
+            domain.record_create("A", name=name, target=target)
+
+
+if __name__ == "__main__":
+    main()

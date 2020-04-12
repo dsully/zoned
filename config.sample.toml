@@ -1,0 +1,15 @@
+[linode]
+token = "..."
+domain = "sample.com"
+skip = [
+    "host1",
+    "host2"
+]
+
+[unifi]
+host = "unifi"
+username = "username"
+password = "password"
+port = "443"
+# Change to unifiOS when at 1.6+
+version = "v5"
