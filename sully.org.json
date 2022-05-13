@@ -1,0 +1,915 @@
+{
+    "apex_a": {
+        "name": "@",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "172.104.194.233"
+        ]
+    },
+    "apex_mx": {
+        "name": "@",
+        "type": "MX",
+        "ttl": 10800,
+        "values": [
+            "10 in1-smtp.messagingengine.com.",
+            "20 in2-smtp.messagingengine.com."
+        ]
+    },
+    "apex_spf": {
+        "name": "@",
+        "type": "SPF",
+        "ttl": 3600,
+        "values": [
+            "\"v=spf1 include:spf.messagingengine.com ?all\""
+        ]
+    },
+    "apex_txt": {
+        "name": "@",
+        "type": "TXT",
+        "ttl": 3600,
+        "values": [
+            "\"v=spf1 include:spf.messagingengine.com ?all\""
+        ]
+    },
+    "apple-watch-karine_a": {
+        "name": "apple-watch-karine",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.113"
+        ]
+    },
+    "appletv_a": {
+        "name": "appletv",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.80"
+        ]
+    },
+    "august-connect_a": {
+        "name": "august-connect",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.31"
+        ]
+    },
+    "blueair-craft-room_a": {
+        "name": "blueair-craft-room",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.163"
+        ]
+    },
+    "blueair-kids_a": {
+        "name": "blueair-kids",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.164"
+        ]
+    },
+    "blueair-master_a": {
+        "name": "blueair-master",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.165"
+        ]
+    },
+    "blueair-office_a": {
+        "name": "blueair-office",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.166"
+        ]
+    },
+    "clock-kids_a": {
+        "name": "clock-kids",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.131"
+        ]
+    },
+    "clock-master_a": {
+        "name": "clock-master",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.132"
+        ]
+    },
+    "crashplan_cname": {
+        "name": "crashplan",
+        "type": "CNAME",
+        "ttl": 3600,
+        "values": [
+            "server"
+        ]
+    },
+    "denon_a": {
+        "name": "denon",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.77"
+        ]
+    },
+    "dl_cname": {
+        "name": "dl",
+        "type": "CNAME",
+        "ttl": 3600,
+        "values": [
+            "server"
+        ]
+    },
+    "doorbird_a": {
+        "name": "doorbird",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.30"
+        ]
+    },
+    "dsully-md1_a": {
+        "name": "dsully-md1",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.99"
+        ]
+    },
+    "dsully-mn1_a": {
+        "name": "dsully-mn1",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.98"
+        ]
+    },
+    "ecobee3-downstairs_a": {
+        "name": "ecobee3-downstairs",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.61"
+        ]
+    },
+    "ecobee3-upstairs_a": {
+        "name": "ecobee3-upstairs",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.62"
+        ]
+    },
+    "fan-front-bedroom-controller_a": {
+        "name": "fan-front-bedroom-controller",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.171"
+        ]
+    },
+    "fan-front-bedroom_a": {
+        "name": "fan-front-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.170"
+        ]
+    },
+    "fan-kids-room-controller_a": {
+        "name": "fan-kids-room-controller",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.173"
+        ]
+    },
+    "fan-kids-room_a": {
+        "name": "fan-kids-room",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.172"
+        ]
+    },
+    "fan-living-room-controller_a": {
+        "name": "fan-living-room-controller",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.175"
+        ]
+    },
+    "fan-living-room_a": {
+        "name": "fan-living-room",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.174"
+        ]
+    },
+    "fan-master-bedroom-controller_a": {
+        "name": "fan-master-bedroom-controller",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.177"
+        ]
+    },
+    "fan-master-bedroom_a": {
+        "name": "fan-master-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.176"
+        ]
+    },
+    "floor-heat-kids_a": {
+        "name": "floor-heat-kids",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.64"
+        ]
+    },
+    "floor-heat-master_a": {
+        "name": "floor-heat-master",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.65"
+        ]
+    },
+    "flume-bridge_a": {
+        "name": "flume-bridge",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.63"
+        ]
+    },
+    "fm1__domainkey_cname": {
+        "name": "fm1._domainkey",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "fm1.sully.org.dkim.fmhosted.com."
+        ]
+    },
+    "fm2__domainkey_cname": {
+        "name": "fm2._domainkey",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "fm2.sully.org.dkim.fmhosted.com."
+        ]
+    },
+    "fm3__domainkey_cname": {
+        "name": "fm3._domainkey",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "fm3.sully.org.dkim.fmhosted.com."
+        ]
+    },
+    "gateway_a": {
+        "name": "gateway",
+        "type": "A",
+        "ttl": 1800,
+        "values": [
+            "135.180.250.40"
+        ]
+    },
+    "homebridge_cname": {
+        "name": "homebridge",
+        "type": "CNAME",
+        "ttl": 3600,
+        "values": [
+            "server"
+        ]
+    },
+    "homepod-front-bedroom_a": {
+        "name": "homepod-front-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.84"
+        ]
+    },
+    "homepod-kids_a": {
+        "name": "homepod-kids",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.83"
+        ]
+    },
+    "homepod-kitchen_a": {
+        "name": "homepod-kitchen",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.81"
+        ]
+    },
+    "homepod-master_a": {
+        "name": "homepod-master",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.82"
+        ]
+    },
+    "hottub_a": {
+        "name": "hottub",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.167"
+        ]
+    },
+    "hue-light-bridge_a": {
+        "name": "hue-light-bridge",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.67"
+        ]
+    },
+    "imap_cname": {
+        "name": "imap",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "imap.fastmail.com"
+        ]
+    },
+    "ipad-eliza_a": {
+        "name": "ipad-eliza",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.122"
+        ]
+    },
+    "ipad-front-bedroom_a": {
+        "name": "ipad-front-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.86"
+        ]
+    },
+    "ipad-karine_a": {
+        "name": "ipad-karine",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.116"
+        ]
+    },
+    "ipad-kids-bedroom_a": {
+        "name": "ipad-kids-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.85"
+        ]
+    },
+    "ipad-kitchen_a": {
+        "name": "ipad-kitchen",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.119"
+        ]
+    },
+    "ipad-living-room_a": {
+        "name": "ipad-living-room",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.87"
+        ]
+    },
+    "ipad-master-bedroom_a": {
+        "name": "ipad-master-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.88"
+        ]
+    },
+    "iphone-dan_a": {
+        "name": "iphone-dan",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.125"
+        ]
+    },
+    "iphone-karine_a": {
+        "name": "iphone-karine",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.117"
+        ]
+    },
+    "ipmi_a": {
+        "name": "ipmi",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.101"
+        ]
+    },
+    "liftmaster-bridge_a": {
+        "name": "liftmaster-bridge",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.66"
+        ]
+    },
+    "lutron-bridge_a": {
+        "name": "lutron-bridge",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.27"
+        ]
+    },
+    "macbook-karine_a": {
+        "name": "macbook-karine",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.123"
+        ]
+    },
+    "miele-dryer_a": {
+        "name": "miele-dryer",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.29"
+        ]
+    },
+    "miele-washer_a": {
+        "name": "miele-washer",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.28"
+        ]
+    },
+    "nest-protect-entry_a": {
+        "name": "nest-protect-entry",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.44"
+        ]
+    },
+    "nest-protect-front-bedroom_a": {
+        "name": "nest-protect-front-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.45"
+        ]
+    },
+    "nest-protect-hallway_a": {
+        "name": "nest-protect-hallway",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.46"
+        ]
+    },
+    "nest-protect-kids-room_a": {
+        "name": "nest-protect-kids-room",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.47"
+        ]
+    },
+    "nest-protect-master-bedroom_a": {
+        "name": "nest-protect-master-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.48"
+        ]
+    },
+    "nest-protect-upstairs_a": {
+        "name": "nest-protect-upstairs",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.49"
+        ]
+    },
+    "netatmo_a": {
+        "name": "netatmo",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.69"
+        ]
+    },
+    "nintendo-switch_a": {
+        "name": "nintendo-switch",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.148"
+        ]
+    },
+    "nvr_a": {
+        "name": "nvr",
+        "type": "A",
+        "ttl": 10800,
+        "values": [
+            "10.0.0.2"
+        ]
+    },
+    "outlet-landscape-lighting_a": {
+        "name": "outlet-landscape-lighting",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.224"
+        ]
+    },
+    "parents_a": {
+        "name": "parents",
+        "type": "A",
+        "ttl": 1200,
+        "values": [
+            "73.140.170.180"
+        ]
+    },
+    "peloton_a": {
+        "name": "peloton",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.151"
+        ]
+    },
+    "photos_cname": {
+        "name": "photos",
+        "type": "CNAME",
+        "ttl": 86400,
+        "values": [
+            "domains.smugmug.com."
+        ]
+    },
+    "plex_cname": {
+        "name": "plex",
+        "type": "CNAME",
+        "ttl": 3600,
+        "values": [
+            "server"
+        ]
+    },
+    "powerstrip-lutron_a": {
+        "name": "powerstrip-lutron",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.169"
+        ]
+    },
+    "printer-label-p950nw_a": {
+        "name": "printer-label-p950nw",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.53"
+        ]
+    },
+    "printer-label-ql1110nwb_a": {
+        "name": "printer-label-ql1110nwb",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.52"
+        ]
+    },
+    "printer-laser_a": {
+        "name": "printer-laser",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.50"
+        ]
+    },
+    "printer-photo_a": {
+        "name": "printer-photo",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.51"
+        ]
+    },
+    "printer_cname": {
+        "name": "printer",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "printer-laser.sully.org."
+        ]
+    },
+    "prowlarr_cname": {
+        "name": "prowlarr",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "server"
+        ]
+    },
+    "rachio_a": {
+        "name": "rachio",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.60"
+        ]
+    },
+    "radarr_cname": {
+        "name": "radarr",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "server"
+        ]
+    },
+    "radiora2-controller-a_a": {
+        "name": "radiora2-controller-a",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.25"
+        ]
+    },
+    "radiora2-controller-b_a": {
+        "name": "radiora2-controller-b",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.26"
+        ]
+    },
+    "rss_a": {
+        "name": "rss",
+        "type": "A",
+        "ttl": 10800,
+        "values": [
+            "172.104.194.233"
+        ]
+    },
+    "server_a": {
+        "name": "server",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.100"
+        ]
+    },
+    "shield_a": {
+        "name": "shield",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.79"
+        ]
+    },
+    "sisyphus_a": {
+        "name": "sisyphus",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.153"
+        ]
+    },
+    "smtp_cname": {
+        "name": "smtp",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "smtp.fastmail.com"
+        ]
+    },
+    "solar-bridge-1_a": {
+        "name": "solar-bridge-1",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.23"
+        ]
+    },
+    "solar-bridge-2_a": {
+        "name": "solar-bridge-2",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.24"
+        ]
+    },
+    "sonarr_cname": {
+        "name": "sonarr",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "server"
+        ]
+    },
+    "sonos-deck_a": {
+        "name": "sonos-deck",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.70"
+        ]
+    },
+    "sonos-dining-room_a": {
+        "name": "sonos-dining-room",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.71"
+        ]
+    },
+    "sonos-front-bedroom_a": {
+        "name": "sonos-front-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.72"
+        ]
+    },
+    "sonos-kids-bedroom_a": {
+        "name": "sonos-kids-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.73"
+        ]
+    },
+    "sonos-master-bedroom_a": {
+        "name": "sonos-master-bedroom",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.74"
+        ]
+    },
+    "sonos-office_a": {
+        "name": "sonos-office",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.75"
+        ]
+    },
+    "stash_cname": {
+        "name": "stash",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "server"
+        ]
+    },
+    "syncthing_cname": {
+        "name": "syncthing",
+        "type": "CNAME",
+        "ttl": 10800,
+        "values": [
+            "server"
+        ]
+    },
+    "tesla-model-s_a": {
+        "name": "tesla-model-s",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.161"
+        ]
+    },
+    "tesla-powerwall_a": {
+        "name": "tesla-powerwall",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.162"
+        ]
+    },
+    "tmobile-cell-spot_a": {
+        "name": "tmobile-cell-spot",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.22"
+        ]
+    },
+    "tv_a": {
+        "name": "tv",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.78"
+        ]
+    },
+    "unifi_a": {
+        "name": "unifi",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.1"
+        ]
+    },
+    "ups-2_a": {
+        "name": "ups-2",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.21"
+        ]
+    },
+    "uvc-garage-back_a": {
+        "name": "uvc-garage-back",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.32"
+        ]
+    },
+    "uvc-garage-front_a": {
+        "name": "uvc-garage-front",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.33"
+        ]
+    },
+    "uvc-north-east-upstairs_a": {
+        "name": "uvc-north-east-upstairs",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.35"
+        ]
+    },
+    "uvc-north-east_a": {
+        "name": "uvc-north-east",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.34"
+        ]
+    },
+    "uvc-north-west_a": {
+        "name": "uvc-north-west",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.36"
+        ]
+    },
+    "uvc-south-east_a": {
+        "name": "uvc-south-east",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.37"
+        ]
+    },
+    "uvc-south-west_a": {
+        "name": "uvc-south-west",
+        "type": "A",
+        "ttl": 3600,
+        "values": [
+            "10.0.0.38"
+        ]
+    },
+    "windows_a": {
+        "name": "windows",
+        "type": "A",
+        "ttl": 10800,
+        "values": [
+            "10.0.0.106"
+        ]
+    }
+}
