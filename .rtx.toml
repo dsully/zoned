@@ -1,0 +1,6 @@
+[tools]
+python = { version = "3.10", virtualenv = ".venv" }
+
+[settings]
+missing_runtime_behavior = 'warn'
+verbose = true
