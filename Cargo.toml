@@ -1,0 +1,25 @@
+[package]
+edition = "2021"
+name = "cloudflare-dns"
+version = "0.0.1"
+
+[[bin]]
+name = "cloudflare-dns-updater"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1.0.70"
+cloudflare = { git = "https://github.com/cloudflare/cloudflare-rs", features = [
+    "blocking",
+    "rustls-tls",
+] }
+local-ip-address = "0.5.1"
+reqwest = { version = "0.11.6", default-features = false, features = [
+    "blocking",
+    "json",
+    "rustls-tls",
+] }
+serde = "1.0.159"
+serde_json = "1.0.95"
+toml = "0.7.3"
+xdg = "2.4.1"

@@ -22,6 +22,7 @@ class Host:
     type: str = field(default="")
 
 
+    route: dict[str, dict[str, str]] = next(IPRoute().route('get', dst=GW))
 def local_addresses() -> list[Host]:
     prefix = 0
 
