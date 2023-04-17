@@ -9,7 +9,7 @@ path = "main.rs"
 
 [dependencies]
 anyhow = "1.0.70"
-cloudflare = { git = "https://github.com/cloudflare/cloudflare-rs", features = [
+cloudflare = { git = "https://github.com/cloudflare/cloudflare-rs", default-features = false, features = [
   "blocking",
   "rustls-tls",
 ] }

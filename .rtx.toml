@@ -1,0 +1,2 @@
+[env]
+CROSS_CONTAINER_ENGINE = "podman"
