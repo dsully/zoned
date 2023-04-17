@@ -3,16 +3,19 @@
 import socket
 
 from dataclasses import dataclass, field
+from typing import Any
 
 import CloudFlare
 import netifaces
 import requests
+import rich
 
 from getmac import get_mac_address
 from netaddr.ip import IPAddress, IPNetwork
 from netaddr.eui import EUI
+from pyroute2 import IPRoute
 
-IF = "eno1"
+GW = "10.0.0.1"
 
 
 @dataclass
@@ -22,7 +25,12 @@ class Host:
     type: str = field(default="")
 
 
-    route: dict[str, dict[str, str]] = next(IPRoute().route('get', dst=GW))
+def local_ipv4() -> str:
+    route: dict[str, Any] = next(iter(IPRoute().route('get', dst=GW)))
+
+    return str(dict(route['attrs'])['RTA_PREFSRC'])
+
+
 def local_addresses() -> list[Host]:
     prefix = 0
 
@@ -32,21 +40,34 @@ def local_addresses() -> list[Host]:
         network = IPNetwork(addresses["netmask"]).prefixlen  # type: ignore
 
         if addr.is_link_local():
-            print("Skipping link-local address.")
+            rich.print("[yellow]Skipping link-local address.[/yellow]")
             continue
 
         prefix = IPAddress(IPNetwork(f"{addr}/{network}").network)
 
         break
 
-    print("Getting public IP addresses...")
+    def host(name: str) -> str:
+        return str(socket.gethostbyname(f"{name}.sully.org"))
+
+    def ip(name: str) -> str:
+        return str(EUI(get_mac_address(hostname=name) or "").ipv6(prefix))
+
+
+    rich.print("Getting public IP addresses...")
 
     hosts = [
         Host("gateway.sully.org", type="A", ip=requests.get("https://ipinfo.io/json").json()["ip"]),
         Host("gateway.sully.org", type="AAAA", ip=requests.get("https://v6.ipinfo.io/json").json()["ip"]),
-        Host("gpu.sully.org", type="A", ip=socket.gethostbyname("gpu")),
-        Host("server.sully.org", type="A", ip=socket.gethostbyname("server.sully.org")),
-        Host("gpu.sully.org", type="AAAA", ip=str(EUI(get_mac_address(hostname="gpu") or "").ipv6(prefix))),
+        Host("dsully-md1.sully.org", type="A", ip=host("dsully-md1")),
+        Host("dsully-mn2.sully.org", type="A", ip=host("dsully-mn2")),
+        Host("gpu.sully.org", type="A", ip=host("gpu")),
+        Host("jarvis.sully.org", type="A", ip=host("jarvis")),
+        Host("server.sully.org", type="A", ip=host("server")),
+        Host("dsully-md1.sully.org", type="AAAA", ip=ip("dsully-md1")),
+        Host("dsully-mn2.sully.org", type="AAAA", ip=ip("dsully-mn2")),
+        Host("gpu.sully.org", type="AAAA", ip=ip("gpu")),
+        Host("jarvis.sully.org", type="AAAA", ip=ip("jarvis")),
         Host("server.sully.org", type="AAAA", ip=str(EUI(get_mac_address(interface=IF) or "").ipv6(prefix))),
     ]
 
@@ -56,7 +77,7 @@ def local_addresses() -> list[Host]:
 def main():
     cf = CloudFlare.CloudFlare()
 
-    print("Updating CloudFlare DNS records...")
+    rich.print("Updating CloudFlare DNS records...")
 
     zone_info: dict[str, str] = cf.zones.get(params={"name": "sully.org"})[0]
     zone_id: str = zone_info["id"]
@@ -76,7 +97,7 @@ def main():
             old_ip: str = match["content"]
 
             if host.ip == old_ip:
-                print("UNCHANGED: %s -> %s" % (host.name, host.ip))
+                rich.print(f"[blue]Unchanged[/blue]: {host.name} -> {host.ip}")
                 continue
 
             try:
@@ -86,16 +107,16 @@ def main():
                     data={"name": host.name, "type": host.type, "content": host.ip, "proxied": match["proxied"]},
                 )
 
-                print(f"UPDATED: {host.name} {old_ip} -> {host.ip}")
+                rich.print(f"[green]Updated[/green]: {host.name} {old_ip} -> {host.ip}")
             except Exception as e:
-                print(f"/zones.dns_records.put {host.name} - {e} - API call failed")
+                rich.print(f"/zones.dns_records.put {host.name} - {e} - [red]API call failed![/red]")
 
         else:
             try:
                 cf.zones.dns_records.post(zone_id, data={"name": host.name, "type": host.type, "content": host.ip})
-                print(f"ADDED: {host.name} -> {host.ip}")
+                rich.print(f"[green]Added[/green]: {host.name} -> {host.ip}")
             except Exception as e:
-                print("/zones.dns_records.post %s - %d %s - API call failed" % (host.name, e, e))
+                rich.print(f"/zones.dns_records.post {host.name} - {e} - [red]API call failed![/red]")
 
 
 if __name__ == "__main__":
