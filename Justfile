@@ -1,5 +1,7 @@
 target := "./target/aarch64-unknown-linux-gnu/release/cloudflare-dns-updater"
 
+set dotenv-load
+
 default: install
 
 install: build
@@ -11,6 +13,6 @@ build:
 cross:
     @cross build --release
 
-install-remote: cross REMOTEHOST
-    @scp {{target}} root@{{REMOTEHOST}}:/usr/local/bin/
+install-remote: cross
+    @scp {{target}} root@$REMOTEHOST:/usr/local/bin/
     @croc --yes send {{target}}
