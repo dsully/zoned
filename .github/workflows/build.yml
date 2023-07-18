@@ -33,11 +33,11 @@ jobs:
             arch: amd64
             host: ubuntu-latest
             os: linux
-          - name: Linux aarch64
-            target: aarch64-unknown-linux-gnu
-            arch: arm64
-            host: ubuntu-latest
-            os: linux
+          # - name: Linux aarch64
+          #   target: aarch64-unknown-linux-gnu
+          #   arch: arm64
+          #   host: ubuntu-latest
+          #   os: linux
 
     runs-on: ${{ matrix.host }}
 
@@ -49,7 +49,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
-          target: ${{ matrix.target }}
+          targets: ${{ matrix.target }}
           toolchain: stable
 
       - uses: swatinem/rust-cache@v2
