@@ -1,10 +1,10 @@
 [package]
 edition = "2021"
-name = "cloudflare-dns"
+name = "zoned"
 version = "0.0.2"
 
 [[bin]]
-name = "cloudflare-dns-updater"
+name = "zoned"
 path = "main.rs"
 
 [dependencies]
