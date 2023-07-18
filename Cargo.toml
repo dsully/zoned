@@ -8,21 +8,21 @@ name = "zoned"
 path = "main.rs"
 
 [dependencies]
-anyhow = { version = "1.0.71", features = [ "backtrace" ] }
+anyhow = { version = "1.0.72", features = [ "backtrace" ] }
 cloudflare = { git = "https://github.com/cloudflare/cloudflare-rs", default-features = false, features = [
     "blocking",
     "rustls-tls",
 ] }
 config = { version = "0.13.3", default-features = false, features = ["toml"] }
-default-net = "0.15.0"
+default-net = "0.16.2"
 ip_network = "0"
-regex = "1.8"
+regex = "1.9"
 reqwest = { version = "0.11.18", default-features = false, features = [
     "blocking",
     "json",
     "rustls-tls",
 ] }
-serde = "1.0.163"
-serde_json = "1.0.96"
+serde = "1.0.171"
+serde_json = "1.0.103"
 xdg = "2.5.0"
 
