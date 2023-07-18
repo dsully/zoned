@@ -33,11 +33,6 @@ jobs:
             arch: amd64
             host: ubuntu-latest
             os: linux
-          # - name: Linux aarch64
-          #   target: aarch64-unknown-linux-gnu
-          #   arch: arm64
-          #   host: ubuntu-latest
-          #   os: linux
 
     runs-on: ${{ matrix.host }}
 
