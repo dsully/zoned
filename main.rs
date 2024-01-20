@@ -1,58 +1,62 @@
-use std::fs;
 use std::net::IpAddr;
 use std::str::FromStr;
 
-use anyhow::Context;
+use anyhow::{Context, Result};
+use clap::Parser;
 use cloudflare::endpoints::dns;
 use cloudflare::endpoints::dns::{DnsContent, DnsRecord};
 use cloudflare::framework::{
-    auth::Credentials, response::ApiSuccess, Environment, HttpApiClient, HttpApiClientConfig,
+    async_api::Client, auth::Credentials, response::ApiSuccess, Environment, HttpApiClientConfig,
 };
 use local_ip_address::local_ip;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
+use tracing::{debug, info};
+use tracing_subscriber::{filter::filter_fn, prelude::*};
 
-const V4_URL: &str = "https://ipinfo.io/json";
 const V6_URL: &str = "https://v6.ipinfo.io/json";
 
-#[derive(Serialize, Deserialize)]
+#[derive(Deserialize)]
 pub struct Config {
     pub token: String,
     pub zoneid: String,
     pub hostname: String,
-    pub public: Option<String>,
 }
 
-fn config_file() -> anyhow::Result<Config> {
+fn config_file() -> Result<Config> {
     let xdg_dir =
-        xdg::BaseDirectories::with_prefix("dns-updater").context("Failed get config directory")?;
+        xdg::BaseDirectories::with_prefix("zoned").context("Failed get config directory")?;
 
-    let filename = xdg_dir
-        .place_config_file("config.toml")
-        .context("failed get path")?;
+    let filename = xdg_dir.place_config_file("config.toml")?;
 
-    let contents =
-        fs::read_to_string(&filename).with_context(|| format!("Couldn't read {:?}", filename))?;
+    let builder = config::Config::builder()
+        .add_source(config::File::from(filename))
+        .build()
+        .context("Unable to load config file!")?;
 
-    let config: Config =
-        toml::from_str(&contents).with_context(|| format!("Couldn't parse {:?}", filename))?;
-
-    Ok(config)
+    builder
+        .try_deserialize()
+        .context("Unable to parse config file!")
 }
 
-fn local_ip_address() -> anyhow::Result<IpAddr> {
+fn local_ip_address() -> Result<IpAddr> {
     let ip = local_ip()?.to_string();
+
+    debug!("Found Local IP: {ip}");
 
     IpAddr::from_str(&ip).context("failed to parse IPv4 address")
 }
 
-fn remote_ip_address(url: &str) -> anyhow::Result<IpAddr> {
-    let response =
-        reqwest::blocking::get(url).with_context(|| "Failed to get IPv6 Address from API!");
+async fn remote_ip_address(url: &str) -> Result<IpAddr> {
+    debug!("Fetching IPv6 Address from {url}");
 
-    let parsed: serde_json::Value = response.unwrap().json()?;
+    let response = reqwest::get(url).await?;
+
+    let parsed: serde_json::Value = response.json().await?;
     let ip = parsed["ip"]
         .as_str()
-        .with_context(|| "Failed to get IPv6 Address from API!")?;
+        .context("Failed to get IPv6 Address from API!")?;
+
+    debug!("Found IPv6 Address: {ip}");
 
     IpAddr::from_str(ip).context("failed to parse IPv6 address")
 }
@@ -65,53 +69,47 @@ fn ip_from_record(record: &DnsRecord) -> IpAddr {
     }
 }
 
-fn update_zone(
+async fn update_zone(
     zoneid: &String,
     hostname: &String,
-    client: &HttpApiClient,
+    client: &Client,
     detected_ip_addr: IpAddr,
-) -> anyhow::Result<()> {
+) -> Result<()> {
     let detected_dns_content = match detected_ip_addr {
         IpAddr::V4(ip) => DnsContent::A { content: ip },
         IpAddr::V6(ip) => DnsContent::AAAA { content: ip },
     };
 
     // Fetch the current DNS record matching the record type and given name.
-    let current_dns_record = {
-        client
-            .request(&dns::ListDnsRecords {
-                zone_identifier: zoneid,
-                params: dns::ListDnsRecordsParams {
-                    name: Some(hostname.to_string()),
-                    record_type: Some(detected_dns_content.clone()),
-                    ..Default::default()
-                },
+    let current_dns_record = client
+        .request(&dns::ListDnsRecords {
+            zone_identifier: zoneid,
+            params: dns::ListDnsRecordsParams {
+                name: Some(hostname.to_string()),
+                record_type: Some(detected_dns_content.clone()),
+                ..Default::default()
+            },
+        })
+        .await
+        .map(|response: ApiSuccess<Vec<DnsRecord>>| {
+            response.result.into_iter().find(|record| {
+                matches!(
+                    record.content,
+                    DnsContent::A { .. } | DnsContent::AAAA { .. }
+                )
             })
-            .map(|response: ApiSuccess<Vec<DnsRecord>>| {
-                response.result.into_iter().find(|record| {
-                    matches!(
-                        record.content,
-                        DnsContent::A { .. } | DnsContent::AAAA { .. }
-                    )
-                })
-            })?
-    };
-
-    // println!("Record {:?}", current_dns_record);
+        })?;
 
     // If the record exists
     if let Some(current_dns_record) = current_dns_record {
+        debug!("Current DNS Record {current_dns_record:#?}");
+
         let current_ip_addr = ip_from_record(&current_dns_record);
+
         if detected_ip_addr == current_ip_addr {
-            println!(
-                "No change required. {} is already set to {}",
-                hostname, current_ip_addr
-            );
+            info!("No change required. {hostname} is already set to {current_ip_addr}");
         } else {
-            println!(
-                "Updating {} from {} to {}",
-                hostname, current_ip_addr, detected_ip_addr
-            );
+            info!("Updating {hostname} from {current_ip_addr} to {detected_ip_addr}");
 
             // Update the DNS record
             client
@@ -125,13 +123,11 @@ fn update_zone(
                         ttl: Some(current_dns_record.ttl),
                     },
                 })
-                .with_context(|| "")?;
+                .await
+                .context("Unable to update the DNS record!")?;
         }
     } else {
-        println!(
-            "No record for {} exists. Creating as {}",
-            hostname, detected_ip_addr
-        );
+        info!("No record for {hostname} exists. Creating as {detected_ip_addr}");
 
         // Create the DNS record
         client
@@ -145,35 +141,47 @@ fn update_zone(
                     priority: None,
                 },
             })
-            .with_context(|| "")?;
+            .await
+            .context("Unable to create a DNS record!")?;
     }
 
     Ok(())
 }
 
-fn main() -> anyhow::Result<()> {
+#[derive(Debug, Parser)]
+struct Cli {
+    #[command(flatten)]
+    verbose: clap_verbosity_flag::Verbosity,
+}
+
+#[tokio::main]
+async fn main() -> Result<()> {
+    let cli = Cli::parse();
+
+    // Log from this crate only.
+    tracing_subscriber::registry()
+        .with(tracing_subscriber::EnvFilter::new(
+            cli.verbose.log_level_filter().to_string(),
+        ))
+        .with(
+            tracing_subscriber::fmt::layer().with_filter(filter_fn(|metadata| {
+                metadata.target().starts_with(env!("CARGO_PKG_NAME"))
+            })),
+        )
+        .init();
+
     let config: Config = config_file()?;
 
     let credentials = Credentials::UserAuthToken {
         token: config.token.clone(),
     };
 
-    let client = HttpApiClient::new(
+    let client = Client::new(
         credentials,
         HttpApiClientConfig::default(),
         Environment::Production,
     )
     .context("Unable to initialize client")?;
-
-    if let Some(public) = config.public {
-        update_zone(
-            &config.zoneid,
-            &public,
-            &client,
-            remote_ip_address(V4_URL)?,
-        )
-        .with_context(|| "Failed to update public IPv4 Record")?;
-    };
 
     update_zone(
         &config.zoneid,
@@ -181,15 +189,17 @@ fn main() -> anyhow::Result<()> {
         &client,
         local_ip_address()?,
     )
-    .with_context(|| "Failed to update IPv4 Record")?;
+    .await
+    .context("Failed to update IPv4 Record")?;
 
     update_zone(
         &config.zoneid,
         &config.hostname,
         &client,
-        remote_ip_address(V6_URL)?,
+        remote_ip_address(V6_URL).await?,
     )
-    .with_context(|| "Failed to update IPv6 Record")?;
+    .await
+    .context("Failed to update IPv6 Record")?;
 
     Ok(())
 }
