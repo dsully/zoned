@@ -1,5 +1,4 @@
 use std::net::IpAddr;
-use std::str::FromStr;
 
 use anyhow::{Context, Result};
 use clap::Parser;
@@ -43,7 +42,7 @@ fn local_ip_address() -> Result<IpAddr> {
 
     debug!("Found Local IP: {ip}");
 
-    IpAddr::from_str(&ip).context("failed to parse IPv4 address")
+    ip.parse().context("failed to parse IPv4 address")
 }
 
 async fn remote_ip_address(url: &str) -> Result<IpAddr> {
@@ -52,13 +51,14 @@ async fn remote_ip_address(url: &str) -> Result<IpAddr> {
     let response = reqwest::get(url).await?;
 
     let parsed: serde_json::Value = response.json().await?;
+
     let ip = parsed["ip"]
         .as_str()
         .context("Failed to get IPv6 Address from API!")?;
 
     debug!("Found IPv6 Address: {ip}");
 
-    IpAddr::from_str(ip).context("failed to parse IPv6 address")
+    ip.parse().context("failed to parse IPv6 address")
 }
 
 fn ip_from_record(record: &DnsRecord) -> IpAddr {
