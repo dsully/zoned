@@ -1,6 +1,6 @@
 [package]
 name = "zoned"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 repository = "https://github.com/dsully/zoned"
 
@@ -26,15 +26,15 @@ inherits = "release"
 lto = "thin"
 
 [dependencies]
-anyhow = { version = "1.0.79", features = ["backtrace"] }
+anyhow = { version = "1.0.80", features = ["backtrace"] }
 clap = { version = "4", default-features = false, features = ["derive", "help", "std", "usage"] }
-clap-verbosity-flag = "2.1.2"
+clap-verbosity-flag = "2.2.0"
 cloudflare = { version = "0.11.0", default-features = false, features = ["rustls-tls"] }
 config = { version = "0.14.0", default-features = false, features = ["toml"] }
 local-ip-address = "0.6.1"
-reqwest = { version = "0.11.24", default-features = false, features = ["json", "rustls-tls"] }
-serde = "1.0.196"
-serde_json = "1.0.113"
+reqwest = { version = "0.11.25", default-features = false, features = ["json", "rustls-tls"] }
+serde = "1.0.197"
+serde_json = "1.0.114"
 tokio = { version = "1.36.0", features = ["macros", "net", "rt-multi-thread"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
