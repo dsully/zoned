@@ -26,16 +26,26 @@ inherits = "release"
 lto = "thin"
 
 [dependencies]
-anyhow = { version = "1.0.80", features = ["backtrace"] }
-clap = { version = "4", default-features = false, features = ["derive", "help", "std", "usage"] }
-clap-verbosity-flag = "2.2.0"
-cloudflare = { version = "0.11.0", default-features = false, features = ["rustls-tls"] }
-config = { version = "0.14.0", default-features = false, features = ["toml"] }
+anyhow = "1.0.60"
+clap = { version = "4", default-features = false, features = [
+  "derive",
+  "help",
+  "std",
+  "usage",
+] }
+clap-verbosity-flag = "2.2.1"
+cloudflare = "0.11.0"
+config = { version = "0.14.0", default-features = false, features = [ "toml" ] }
 local-ip-address = "0.6.1"
-reqwest = { version = "0.11.25", default-features = false, features = ["json", "rustls-tls"] }
-serde = "1.0.197"
-serde_json = "1.0.114"
-tokio = { version = "1.36.0", features = ["macros", "net", "rt-multi-thread"] }
+netdev = "0.30"
+reqwest = { version = "0.12.5", features = [ "json" ] }
+serde = "1"
+serde_json = "1"
+tokio = { version = "1.39.2", features = [
+  "macros",
+  "net",
+  "rt-multi-thread",
+] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = [ "env-filter" ] }
 xdg = "2.5.2"

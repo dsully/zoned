@@ -1,3 +1,5 @@
+#![warn(clippy::all, clippy::pedantic)]
+
 use std::net::IpAddr;
 
 use anyhow::{Context, Result};
@@ -19,6 +21,7 @@ pub struct Config {
     pub token: String,
     pub zoneid: String,
     pub hostname: String,
+    pub ssid: Option<String>,
 }
 
 fn config_file() -> Result<Config> {
@@ -65,7 +68,32 @@ fn ip_from_record(record: &DnsRecord) -> IpAddr {
     match record.content {
         DnsContent::A { content } => IpAddr::V4(content),
         DnsContent::AAAA { content } => IpAddr::V6(content),
-        _ => panic!("Unsupported record type: {:?}", record),
+        _ => panic!("Unsupported record type: {record:?}"),
+    }
+}
+
+mod wifi {
+    pub fn ssid() -> Option<String> {
+        default_interface().and_then(|i| {
+            std::process::Command::new("networksetup")
+                .args(["-getairportnetwork", &i])
+                .output()
+                .ok()
+                .and_then(|output| {
+                    if output.status.success() {
+                        String::from_utf8_lossy(&output.stdout)
+                            .split(": ")
+                            .nth(1)
+                            .map(|s| s.trim().to_string())
+                    } else {
+                        None
+                    }
+                })
+        })
+    }
+
+    pub fn default_interface() -> Option<String> {
+        netdev::get_default_interface().ok().map(|i| i.name)
     }
 }
 
@@ -171,6 +199,11 @@ async fn main() -> Result<()> {
         .init();
 
     let config: Config = config_file()?;
+
+    if config.ssid.is_some() && config.ssid != wifi::ssid() {
+        info!("SSID does not match. Exiting.");
+        std::process::exit(1);
+    }
 
     let credentials = Credentials::UserAuthToken {
         token: config.token.clone(),
