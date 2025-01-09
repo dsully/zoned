@@ -51,7 +51,7 @@ fn local_ip_address() -> Result<IpAddr> {
 async fn remote_ip_address(url: &str) -> Result<IpAddr> {
     debug!("Fetching IPv6 Address from {url}");
 
-    let response = reqwest::get(url).await?;
+    let response = reqwest::get(url).await.unwrap();
 
     let parsed: serde_json::Value = response.json().await?;
 
@@ -59,7 +59,7 @@ async fn remote_ip_address(url: &str) -> Result<IpAddr> {
         .as_str()
         .context("Failed to get IPv6 Address from API!")?;
 
-    debug!("Found IPv6 Address: {ip}");
+    debug!("Found IPv6 Address: {}", ip);
 
     ip.parse().context("failed to parse IPv6 address")
 }
