@@ -1,6 +1,6 @@
 [package]
 description = "Update Cloudflare DNS with IPv6 addresses"
-edition = "2021"
+edition = "2024"
 homepage = "https://github.com/dsully/zoned"
 name = "zoned"
 repository = "https://github.com/dsully/zoned"
@@ -28,7 +28,7 @@ inherits = "release"
 lto = "thin"
 
 [dependencies]
-anyhow = "1.0.95"
+anyhow = "1.0.96"
 clap = { version = "4", default-features = false, features = [
   "derive",
   "help",
@@ -37,13 +37,12 @@ clap = { version = "4", default-features = false, features = [
 ] }
 clap-verbosity-flag = "3.0.2"
 cloudflare = { git = "https://github.com/cloudflare/cloudflare-rs", rev = "f14720e4" }
-config = { version = "0.15.4", default-features = false, features = [ "toml" ] }
+config = { version = "0.15.8", default-features = false, features = [ "toml" ] }
 local-ip-address = "0.6.3"
 netdev = "0.32"
 reqwest = { version = "0.12.12", features = [ "json" ] }
 serde = "1"
 serde_json = "1"
-thiserror = "2"
 tokio = { version = "1.43.0", features = [
   "macros",
   "net",
