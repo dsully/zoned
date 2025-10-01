@@ -28,28 +28,28 @@ inherits = "release"
 lto = "thin"
 
 [dependencies]
-anyhow = "1.0.96"
+anyhow = "1.0.100"
 clap = { version = "4", default-features = false, features = [
   "derive",
   "help",
   "std",
   "usage",
 ] }
-clap-verbosity-flag = "3.0.2"
+clap-verbosity-flag = "3.0.4"
 cloudflare = { git = "https://github.com/cloudflare/cloudflare-rs", rev = "f14720e4" }
-config = { version = "0.15.8", default-features = false, features = [ "toml" ] }
-local-ip-address = "0.6.3"
+config = { version = "0.15.18", default-features = false, features = [ "toml" ] }
+local-ip-address = "0.6.5"
 netdev = "0.32"
-reqwest = { version = "0.12.12", features = [ "json" ] }
+reqwest = { version = "0.12.23", features = [ "json" ] }
 serde = "1"
 serde_json = "1"
-tokio = { version = "1.43.0", features = [
+tokio = { version = "1.47.1", features = [
   "macros",
   "net",
   "rt-multi-thread",
 ] }
 tracing = "0.1.41"
-tracing-subscriber = { version = "0.3.19", features = [ "env-filter" ] }
+tracing-subscriber = { version = "0.3.20", features = [ "env-filter" ] }
 xdg = "2.5.2"
 
 [lints.rust]
